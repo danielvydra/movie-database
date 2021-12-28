@@ -42,7 +42,6 @@ function useRouteMatch(patterns: readonly string[]) {
 function CustomAppBar() {
     const routeMatch = useRouteMatch(pages.map(i => i.route));
     const currentTab = routeMatch?.pattern?.path;
-    console.log(currentTab)
 
     return (
         <AppBar position="static">
@@ -58,11 +57,12 @@ function CustomAppBar() {
                     </Typography>
 
                     <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
-                        {pages.map((page) => (
-                            <Tabs value={currentTab}>
-                                <Tab label={page.title} value={page.route} to={page.route} component={Link} className={"tabLink"}/>
-                            </Tabs>
-                        ))}
+                        <Tabs value={currentTab}>
+                            {pages.map((page,i) => (
+                                <Tab key={i} label={page.title} value={page.route} to={page.route} component={Link}
+                                     className={"tabLink"}/>
+                            ))}
+                        </Tabs>
                     </Box>
 
                 </Toolbar>
