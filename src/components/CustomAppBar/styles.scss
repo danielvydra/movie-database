@@ -1,0 +1,14 @@
+.tabLink {
+  color: white !important;
+  font-weight: bold;
+  margin-left: 2rem;
+
+  &:hover {
+    color: #ffe70e !important;
+  }
+}
+
+.MuiTab-root.Mui-selected {
+  color: #ffe70e !important;
+  border-bottom: 4px solid #ffe70e;
+}

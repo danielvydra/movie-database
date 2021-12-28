@@ -1,8 +1,11 @@
+import CustomAppBar from "../components/CustomAppBar/CustomAppBar";
+import {Typography} from "@mui/material";
 
 function FavoriteMovies() {
     return (
         <div>
-            Favorite movies
+            <CustomAppBar/>
+            <Typography>Favorite movies</Typography>
         </div>
     );
 }
