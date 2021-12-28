@@ -1,24 +1,20 @@
-import logo from "./logo.svg";
-import style from "./App.module.scss";
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import MovieSearch from "./pages/MovieSearch"
+import FavoriteMovies from "./pages/FavoriteMovies";
+import MovieDetail from "./pages/MovieDetail";
+import NonExisting from "./pages/NonExisting";
 
 function App() {
   return (
-    <div className={style.App}>
-      <header className={style["App-header"]}>
-        <img src={logo} className={style["App-logo"]} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className={style["App-link"]}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MovieSearch/>}/>
+          <Route path="search" element={<MovieSearch/>}/>
+          <Route path="favorites" element={<FavoriteMovies/>}/>
+          <Route path="movie/:movieID" element={<MovieDetail/>}/>
+          <Route path="*" element={<NonExisting/>}/>
+        </Routes>
+      </Router>
   );
 }
 
