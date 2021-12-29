@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
+import './app/index.scss';
+import App from './app/App';
 import "./localization/localization"
 
 ReactDOM.render(
