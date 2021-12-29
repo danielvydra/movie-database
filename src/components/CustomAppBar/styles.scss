@@ -1,3 +1,5 @@
+@import "./src/app/common";
+
 .tabLink {
   color: white !important;
   font-weight: bold;
@@ -11,4 +13,9 @@
 .MuiTab-root.Mui-selected {
   color: #ffe70e !important;
   border-bottom: 4px solid #ffe70e;
+}
+
+.navbar {
+  background-color: $primaryColor !important;
+  color: white !important;
 }

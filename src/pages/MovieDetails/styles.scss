@@ -1,8 +1,48 @@
+@import "./src/app/common";
+
 .paper {
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem !important;
+
+  &_rating {
+    @extend .paper;
+    width: 15rem;
+    margin-right: 2rem;
+  }
+
+  &_plot {
+    @extend .paper;
+    margin-left: 3rem;
+    max-width: 60%;
+  }
 }
 
 .metascoreChip {
   font-size: 2vh !important;
+  margin-left: 1rem;
+}
+
+.ratingProgressbar {
+  height: 15px !important;
+  border-radius: 20px;
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.row {
+  display: flex;
+
+  &_title {
+    @extend .row;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+}
+
+.iconButton {
+  margin-left: 2rem !important;
+  height: 45px;
+  width: 45px;
+  color: $primaryColor !important;
 }

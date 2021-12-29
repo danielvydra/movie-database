@@ -46,7 +46,7 @@ function CustomAppBar() {
     const currentTab = routeMatch?.pattern?.path
 
     return (
-        <AppBar position="static">
+        <AppBar position="sticky" className={"navbar"}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography

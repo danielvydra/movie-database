@@ -23,7 +23,7 @@ const MovieCard: React.FC<IMovieProps> = ({movie}) => {
                  }
         >
 
-            <Link to={`${AllRoutes.MovieDetails}/${movie.id}`}>
+            <Link to={`${AllRoutes.MovieDetails}/${movie.id}`} target={"_blank"}>
                 <Card sx={{maxWidth: 345}}>
                     <CardActionArea>
                         <CardMedia

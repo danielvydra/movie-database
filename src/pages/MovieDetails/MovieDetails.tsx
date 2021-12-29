@@ -7,7 +7,7 @@ import {
     CircularProgress,
     IconButton,
     LinearProgress,
-    Paper,
+    Paper, Tooltip,
     Typography
 } from "@mui/material";
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
@@ -76,25 +76,33 @@ function MovieDetails() {
     }
 
     const getPlot = () => {
-        return <Paper className={"paper"}>
+        return <Paper className={"paper_plot"}>
             {details?.plot === null ?
                 <Typography>No plot to display</Typography>
-                :
-                <Typography variant={"h6"}>{details?.plot}</Typography>
+                : <>
+                    <Typography variant={"h4"}>{"Description"}</Typography>
+                    <Typography fontSize={"larger"}>{details?.plot}</Typography>
+                </>
             }
         </Paper>
     }
 
     const getStarIcon = () => {
         return (
-            <IconButton onClick={() => setFavorite((prev) => !prev)}>
-                {isFavorite ? <StarIcon fontSize={"large"}/> : <StarOutlineIcon fontSize={"large"}/>}
-            </IconButton>
+            <Tooltip arrow title={
+                <Typography fontSize={15}>
+                    {isFavorite ? "Remove movie from favorites" : "Mark movie as favorite"}
+                </Typography>} placement={"right"}
+            >
+                <IconButton className={"iconButton"} onClick={() => setFavorite((prev) => !prev)}>
+                    {isFavorite ? <StarIcon fontSize={"large"}/> : <StarOutlineIcon fontSize={"large"}/>}
+                </IconButton>
+            </Tooltip>
         )
     }
 
     const getMetascore = () => {
-        return <Chip className={"metascoreChip"} size={"medium"} label={`Metascore: ${details?.metascore}`}
+        return <Chip className={"metascoreChip"} size={"medium"} label={`Metascore: ${details?.metascore ?? "---"}`}
                      color="success" icon={<StarRateRoundedIcon/>}/>
     }
 
@@ -115,20 +123,25 @@ function MovieDetails() {
     }
 
     const getRatings = () => {
-        return <Paper>
+        return <>
             <Typography variant={"h4"}>Ratings</Typography>
             {details?.ratings == null ?
                 <Typography>No ratings to display</Typography>
                 :
-                details?.ratings.map((rating) => {
-                    return <Paper key={uuidv4()}>
-                        <LinearProgress variant={"determinate"} key={uuidv4()} value={getRatingValue(rating.value)}/>
-                        <Typography key={uuidv4()}>{`${rating.value}`}</Typography>
-                        <Typography key={uuidv4()}>{`Source: ${rating.source}`}</Typography>
-                    </Paper>
-                })
+                <Box className={"row"}>
+                    {details?.ratings.map((rating) => {
+                        return <Paper className={"paper_rating"} key={uuidv4()}>
+                            <Box className={"row_title"}>
+                                <LinearProgress className={"ratingProgressbar"} variant={"determinate"} key={uuidv4()}
+                                                value={getRatingValue(rating.value)}/>
+                                <Typography fontSize={30} key={uuidv4()}>{`${rating.value}`}</Typography>
+                            </Box>
+                            <Typography key={uuidv4()}>{`Source: ${rating.source}`}</Typography>
+                        </Paper>
+                    })}
+                </Box>
             }
-        </Paper>
+        </>
     }
 
     const getRatingValue = (value: string | null): number => {
@@ -148,21 +161,36 @@ function MovieDetails() {
         return <Typography variant={"h5"}>{str}</Typography>
     }
 
+    const getPoster = () => {
+        return <Box sx={{width: 300, height: 420}}>
+            <Card sx={{width: 300}}>
+                <CardMedia
+                    component="img"
+                    height="420"
+                    image={details?.imgLink ?? undefined}
+                />
+            </Card>
+        </Box>
+    }
+
     const getContent = () => {
         return (
             <>
-                <Typography variant={"h3"}>{`${details?.title}`}</Typography>
-                {getStarIcon()}
-                {getSubtitle()}
-                {getMetascore()}
-                <Card sx={{maxWidth: 300}}>
-                    <CardMedia
-                        component="img"
-                        height="420"
-                        image={details?.imgLink ?? undefined}
-                    />
-                </Card>
-                {getPlot()}
+                <Box className={"row_title"}>
+                    <Typography variant={"h3"}>{`${details?.title}`}</Typography>
+                    {getStarIcon()}
+                </Box>
+
+                <Box className={"row_title"}>
+                    {getSubtitle()}
+                    {getMetascore()}
+                </Box>
+
+                <Box className={"row"}>
+                    {getPoster()}
+                    {getPlot()}
+                </Box>
+
                 {getLanguages()}
                 {getGenres()}
                 {getWriters()}
@@ -177,16 +205,14 @@ function MovieDetails() {
         <>
             <CustomAppBar/>
 
-            <Box className={"content"}>
-                <Box>
-                    {loading && (
-                        <Box>
-                            <Typography>Loading content...</Typography>
-                            <CircularProgress/>
-                        </Box>
-                    )}
-                    {!details ? <Typography>"No content to show"</Typography> : getContent()}
-                </Box>
+            <Box sx={{mx: 40, my: 10, width: "70%"}}>
+                {loading && (
+                    <Box>
+                        <Typography>Loading content...</Typography>
+                        <CircularProgress/>
+                    </Box>
+                )}
+                {!details ? <Typography>"No content to show"</Typography> : getContent()}
             </Box>
 
         </>
