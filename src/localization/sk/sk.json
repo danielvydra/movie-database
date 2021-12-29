@@ -1,0 +1,17 @@
+{
+  "selectLanguageTooltip": "Vybrať jazyk",
+  "english": "Anglický",
+  "slovak": "Slovenský",
+  "appTitle": "Databáza filmov",
+  "searchMovies": "Vyhľadávanie filmov",
+  "favoriteMovies": "Moje obľúbené filmy",
+  "nothingToDisplay": "Nič na zobrazenie.",
+  "pleaseSearchMovie": "Prosím, vyhľadajte film pre zobrazenie obsahu.",
+  "noResultsFound": "Žiadne výsledky neboli nájdené.",
+  "pleaseTryAgain": "Prosím, skúste znova.",
+  "search": "Vyhľadať",
+  "movieDetail": "Detail filmu",
+  "pageNotFound_title": "Chyba - stránka nebola nájdená.",
+  "pageNotFound_subtitle": "Zadaná cesta neexistuje.",
+  "enterMovieTitle": "Zadajte názov filmu"
+}

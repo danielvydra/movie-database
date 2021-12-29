@@ -8,22 +8,13 @@ import {Link, matchPath, useLocation} from "react-router-dom";
 import {AllRoutes} from "../../consts/AllRoutes";
 import "./styles.scss"
 import {Tab, Tabs} from "@mui/material";
+import LanguageMenu from "../LanguageMenu/LanguageMenu";
+import {useTranslation} from "react-i18next";
 
 interface IPage {
     title: string,
     route: string
 }
-
-const pages: IPage[] = [
-    {
-        title: "Search",
-        route: AllRoutes.MovieSearch
-    },
-    {
-        title: "Favorite movies",
-        route: AllRoutes.FavoriteMovies
-    },
-];
 
 function useRouteMatch(patterns: readonly string[]) {
     const {pathname} = useLocation();
@@ -40,8 +31,19 @@ function useRouteMatch(patterns: readonly string[]) {
 }
 
 function CustomAppBar() {
-    const routeMatch = useRouteMatch(pages.map(i => i.route));
-    const currentTab = routeMatch?.pattern?.path;
+    const {t} = useTranslation()
+    const pages: IPage[] = [
+        {
+            title: t("searchMovies"),
+            route: AllRoutes.MovieSearch
+        },
+        {
+            title: t("favoriteMovies"),
+            route: AllRoutes.FavoriteMovies
+        },
+    ]
+    const routeMatch = useRouteMatch(pages.map(i => i.route))
+    const currentTab = routeMatch?.pattern?.path
 
     return (
         <AppBar position="static">
@@ -53,7 +55,7 @@ function CustomAppBar() {
                         component="div"
                         sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
                     >
-                        Movie database app
+                        {t("appTitle")}
                     </Typography>
 
                     <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
@@ -63,6 +65,10 @@ function CustomAppBar() {
                                      className={"tabLink"}/>
                             ))}
                         </Tabs>
+                    </Box>
+
+                    <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
+                        <LanguageMenu/>
                     </Box>
 
                 </Toolbar>

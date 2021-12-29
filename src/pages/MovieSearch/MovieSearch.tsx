@@ -6,11 +6,13 @@ import MovieCard from "../../components/MovieCard/MovieCard";
 import React, {useState} from "react";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {createMovieInfoStructure} from "../../webServices/utils/MovieInfoStructure";
+import {useTranslation} from "react-i18next";
 
 function MovieSearch() {
     const [movieTitle, setMovieTitle] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [movies, setMovies] = useState<IMovieInfo[] | null>(null);
+    const {t} = useTranslation()
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         console.log(e.target.name, e.target.value)
@@ -31,15 +33,15 @@ function MovieSearch() {
         if (!movies) {
             return (
                 <>
-                    <Typography variant={"h2"}>Nothing to display.</Typography>
-                    <Typography variant={"h4"}>Please, search for movie.</Typography>
+                    <Typography variant={"h2"}>{t("nothingToDisplay")}</Typography>
+                    <Typography variant={"h4"}>{t("pleaseSearchMovie")}</Typography>
                 </>
             )
         } else if (!movies?.length) {
             return (
                 <>
-                    <Typography variant={"h2"}>No results found.</Typography>
-                    <Typography variant={"h4"}>Please, try again.</Typography>
+                    <Typography variant={"h2"}>{t("noResultsFound")}</Typography>
+                    <Typography variant={"h4"}>{t("pleaseTryAgain")}</Typography>
                 </>
             )
         } else {
@@ -59,13 +61,13 @@ function MovieSearch() {
 
             <Box className={"content"}>
                 <Box>
-                    <Typography variant={"h3"}>Movie search</Typography>
+                    <Typography variant={"h3"}>{t("searchMovies")}</Typography>
                     <Box>
                         <TextField
                             name={"title"}
                             value={movieTitle}
                             variant={"outlined"}
-                            placeholder={"Enter movie title"}
+                            placeholder={t("enterMovieTitle")}
                             onChange={(e) => handleChange(e)}
                             InputProps={{
                                 startAdornment: (
@@ -75,7 +77,7 @@ function MovieSearch() {
                                 )
                             }}
                         />
-                        <Button disabled={!movieTitle.trim()} variant="contained" onClick={handleSubmit}>Search</Button>
+                        <Button disabled={!movieTitle.trim()} variant="contained" onClick={handleSubmit}>{t("search")}</Button>
                     </Box>
 
                     <Box>

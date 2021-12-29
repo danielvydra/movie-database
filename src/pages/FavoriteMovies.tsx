@@ -1,11 +1,20 @@
 import CustomAppBar from "../components/CustomAppBar/CustomAppBar";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
+import React from "react";
 
 function FavoriteMovies() {
+    const {t} = useTranslation()
+
     return (
         <div>
             <CustomAppBar/>
-            <Typography>Favorite movies</Typography>
+
+            <Box className={"content"}>
+                <Box>
+                    <Typography variant={"h3"}>{t("favoriteMovies")}</Typography>
+                </Box>
+            </Box>
         </div>
     );
 }

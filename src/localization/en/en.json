@@ -1,0 +1,17 @@
+{
+  "selectLanguageTooltip": "Select language",
+  "english": "English",
+  "slovak": "Slovak",
+  "appTitle": "Movie database app",
+  "searchMovies": "Search movies",
+  "favoriteMovies": "My favorite movies",
+  "nothingToDisplay": "Nothing to display.",
+  "pleaseSearchMovie": "Please, search for a movie to display content.",
+  "noResultsFound": "No results found.",
+  "pleaseTryAgain": "Please, try again.",
+  "search": "Search",
+  "movieDetail": "Movie detail",
+  "pageNotFound_title": "Error - page not found.",
+  "pageNotFound_subtitle": "Given path not exists.",
+  "enterMovieTitle": "Enter movie title"
+}
