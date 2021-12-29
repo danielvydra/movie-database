@@ -7,6 +7,7 @@ import React, {useState} from "react";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {createMovieInfoStructure} from "../../webServices/utils/MovieInfoStructure";
 import {useTranslation} from "react-i18next";
+import EditIcon from '@mui/icons-material/Edit';
 
 function MovieSearch() {
     const [movieTitle, setMovieTitle] = useState<string>("");
@@ -32,10 +33,10 @@ function MovieSearch() {
     const getContent = () => {
         if (!movies) {
             return (
-                <>
-                    <Typography variant={"h2"}>{t("nothingToDisplay")}</Typography>
+                <Box className={"noContent"}>
+                    <Typography variant={"h1"}>{t("nothingToDisplay")}</Typography>
                     <Typography variant={"h4"}>{t("pleaseSearchMovie")}</Typography>
-                </>
+                </Box>
             )
         } else if (!movies?.length) {
             return (
@@ -60,31 +61,29 @@ function MovieSearch() {
             <CustomAppBar/>
 
             <Box className={"content"}>
-                <Box>
+                <Box sx={{display: "flex", justifyContent: "center"}}>
                     <Typography variant={"h3"}>{t("searchMovies")}</Typography>
-                    <Box>
-                        <TextField
-                            name={"title"}
-                            value={movieTitle}
-                            variant={"outlined"}
-                            placeholder={t("enterMovieTitle")}
-                            onChange={(e) => handleChange(e)}
-                            InputProps={{
-                                startAdornment: (
-                                    <InputAdornment position="start">
-                                        <SearchIcon/>
-                                    </InputAdornment>
-                                )
-                            }}
-                        />
-                        <Button disabled={!movieTitle.trim()} variant="contained"
-                                onClick={handleSubmit}>{t("search")}</Button>
-                    </Box>
+                    <TextField
+                        name={"title"}
+                        value={movieTitle}
+                        className={"searchField"}
+                        variant={"outlined"}
+                        placeholder={t("enterMovieTitle")}
+                        onChange={(e) => handleChange(e)}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <EditIcon/>
+                                </InputAdornment>
+                            )
+                        }}
+                    />
+                    <Button className={"submitBtn"} disabled={!movieTitle.trim()} variant="contained"
+                            onClick={handleSubmit} endIcon={<SearchIcon />}>{t("search")}</Button>
+                </Box>
 
-                    <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                        {loading ? <CircularProgress/> : getContent()}
-                    </Box>
-
+                <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+                    {loading ? <CircularProgress/> : getContent()}
                 </Box>
             </Box>
         </>
