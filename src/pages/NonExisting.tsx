@@ -13,7 +13,7 @@ function NonExisting() {
                 {t("pageNotFound_title")}
             </Typography>
 
-            <Typography variant={"h4"}>
+            <Typography variant={"h5"}>
                 {t("pageNotFound_subtitle")}
             </Typography>
         </Box>

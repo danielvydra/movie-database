@@ -7,7 +7,7 @@ import {
     CircularProgress,
     IconButton,
     LinearProgress,
-    Paper, Tooltip,
+    Paper, Stack, Tooltip,
     Typography
 } from "@mui/material";
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
@@ -91,7 +91,7 @@ function MovieDetails() {
         return (
             <Tooltip arrow title={
                 <Typography fontSize={15}>
-                    {isFavorite ? "Remove movie from favorites" : "Mark movie as favorite"}
+                    {isFavorite ? t("removeFavoriteMovie_tooltip") : t("addFavoriteMovie_tooltip")}
                 </Typography>} placement={"right"}
             >
                 <IconButton className={"iconButton"} onClick={() => setFavorite((prev) => !prev)}>
@@ -102,7 +102,8 @@ function MovieDetails() {
     }
 
     const getMetascore = () => {
-        return <Chip className={"metascoreChip"} size={"medium"} label={`Metascore: ${details?.metascore ?? "---"}`}
+        return <Chip className={"metascoreChip"} size={"medium"}
+                     label={`${t("metascore")}: ${details?.metascore ?? "---"}`}
                      color="success" icon={<StarRateRoundedIcon/>}/>
     }
 
@@ -114,7 +115,6 @@ function MovieDetails() {
             <Typography>{details?.imdbVotes}</Typography>
             <Typography>{details?.boxOffice}</Typography>
             <Typography>{details?.awards}</Typography>
-            <Typography>{details?.rated}</Typography>
             <Typography>{details?.production}</Typography>
             <Typography>{details?.released?.format(dateFormat)}</Typography>
             <Typography>{details?.DVD?.format(dateFormat)}</Typography>
@@ -158,6 +158,7 @@ function MovieDetails() {
         if (details?.year) str += `${details?.year}`
         if (details?.runtime) str += ` | ${details?.runtime}`
         if (details?.country) str += ` | ${details?.country}`
+        if (details?.rated) str += ` | ${details?.rated}`
         return <Typography variant={"h5"}>{str}</Typography>
     }
 
@@ -201,19 +202,28 @@ function MovieDetails() {
         )
     }
 
+    const noContentMessage = () => {
+        return <>
+            <Typography variant={"h2"}>{t("noContent_info")}</Typography>
+            <Typography variant={"h5"}>{t("incorrectMovieID")}</Typography>
+        </>
+    }
+
     return (
         <>
             <CustomAppBar/>
 
-            <Box sx={{mx: 40, my: 10, width: "70%"}}>
-                {loading && (
-                    <Box>
-                        <Typography>Loading content...</Typography>
-                        <CircularProgress/>
-                    </Box>
-                )}
-                {!details ? <Typography>"No content to show"</Typography> : getContent()}
-            </Box>
+            <div >
+                <div className={"innerDiv"}>
+                    {loading && (
+                        <Box>
+                            <Typography>Loading content...</Typography>
+                            <CircularProgress/>
+                        </Box>
+                    )}
+                    {!details ? noContentMessage() : getContent()}
+                </div>
+            </div>
 
         </>
     );

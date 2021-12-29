@@ -13,5 +13,10 @@
   "movieDetail": "Movie detail",
   "pageNotFound_title": "Error - page not found.",
   "pageNotFound_subtitle": "Given path not exists.",
-  "enterMovieTitle": "Enter movie title"
+  "enterMovieTitle": "Enter movie title",
+  "removeFavoriteMovie_tooltip": "Remove movie from favorites",
+  "addFavoriteMovie_tooltip": "Mark movie as favorite",
+  "metascore": "Metascore",
+  "noContent_info": "No content to show",
+  "incorrectMovieID": "Movie ID may be incorrect"
 }

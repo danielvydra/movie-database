@@ -77,10 +77,11 @@ function MovieSearch() {
                                 )
                             }}
                         />
-                        <Button disabled={!movieTitle.trim()} variant="contained" onClick={handleSubmit}>{t("search")}</Button>
+                        <Button disabled={!movieTitle.trim()} variant="contained"
+                                onClick={handleSubmit}>{t("search")}</Button>
                     </Box>
 
-                    <Box>
+                    <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
                         {loading ? <CircularProgress/> : getContent()}
                     </Box>
 
