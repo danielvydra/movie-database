@@ -28,7 +28,7 @@ const pages: IPage[] = [
 function useRouteMatch(patterns: readonly string[]) {
     const {pathname} = useLocation();
 
-    for (let i = 0; i < patterns.length; i += 1) {
+    for (let i = 0; i < patterns.length; i++) {
         const pattern = patterns[i];
         const possibleMatch = matchPath(pattern, pathname);
         if (possibleMatch !== null) {
@@ -36,7 +36,7 @@ function useRouteMatch(patterns: readonly string[]) {
         }
     }
 
-    return null;
+    return null
 }
 
 function CustomAppBar() {
@@ -69,6 +69,6 @@ function CustomAppBar() {
             </Container>
         </AppBar>
     );
-};
+}
 
 export default CustomAppBar;

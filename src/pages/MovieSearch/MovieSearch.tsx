@@ -30,25 +30,25 @@ function MovieSearch() {
     const getContent = () => {
         if (!movies) {
             return (
-                <Box>
+                <>
                     <Typography variant={"h2"}>Nothing to display.</Typography>
                     <Typography variant={"h4"}>Please, search for movie.</Typography>
-                </Box>
+                </>
             )
         } else if (!movies?.length) {
             return (
-                <Box>
+                <>
                     <Typography variant={"h2"}>No results found.</Typography>
                     <Typography variant={"h4"}>Please, try again.</Typography>
-                </Box>
+                </>
             )
         } else {
             return (
-                <Box>
+                <>
                     {movies.map((movie) => (
                         <MovieCard movie={movie}/>
                     ))}
-                </Box>
+                </>
             )
         }
     }
@@ -58,25 +58,29 @@ function MovieSearch() {
             <CustomAppBar/>
 
             <Box className={"content"}>
-                <Typography variant={"h3"}>Movie search</Typography>
                 <Box>
-                    <TextField
-                        name={"title"}
-                        value={movieTitle}
-                        variant={"outlined"}
-                        placeholder={"Enter movie title"}
-                        onChange={(e) => handleChange(e)}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <SearchIcon/>
-                                </InputAdornment>
-                            )
-                        }}
-                    />
-                    <Button disabled={!movieTitle.trim()} variant="contained" onClick={handleSubmit}>Search</Button>
+                    <Typography variant={"h3"}>Movie search</Typography>
+                    <Box>
+                        <TextField
+                            name={"title"}
+                            value={movieTitle}
+                            variant={"outlined"}
+                            placeholder={"Enter movie title"}
+                            onChange={(e) => handleChange(e)}
+                            InputProps={{
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon/>
+                                    </InputAdornment>
+                                )
+                            }}
+                        />
+                        <Button disabled={!movieTitle.trim()} variant="contained" onClick={handleSubmit}>Search</Button>
+                    </Box>
 
-                    {loading ? <CircularProgress /> : getContent()}
+                    <Box>
+                        {loading ? <CircularProgress/> : getContent()}
+                    </Box>
 
                 </Box>
             </Box>
