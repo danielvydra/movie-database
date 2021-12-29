@@ -1,9 +1,19 @@
+import {Box, Typography} from "@mui/material";
+import CustomAppBar from "../components/CustomAppBar/CustomAppBar";
 
 function NonExisting() {
     return (
-        <div>
-            404 error - page not found !
-        </div>
+        <Box>
+            <CustomAppBar/>
+
+            <Typography variant={"h2"}>
+                Error - page not found.
+            </Typography>
+
+            <Typography variant={"h4"}>
+                Given path not exists.
+            </Typography>
+        </Box>
     );
 }
 
