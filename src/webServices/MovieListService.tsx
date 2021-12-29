@@ -5,7 +5,7 @@ export async function fetchMovies(title: string, year?: number, type: string = "
     let url = `${config.BACKEND_URL}/?apikey=${config.API_KEY}`
     if (year) url += `&y=${year}`
     url += `&type=${type}`
-    url += `&t=${title}`
+    url += `&s=${title}`
 
     return await axios.get(url).then(r => r.data).catch(() => null)
 }
