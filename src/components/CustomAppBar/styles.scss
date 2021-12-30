@@ -3,7 +3,7 @@
 .tabLink {
   color: white !important;
   font-weight: bold;
-  margin-left: 2rem;
+  margin-left: 2rem !important;
 
   &:hover {
     color: #ffe70e !important;
@@ -18,4 +18,8 @@
 .navbar {
   background-color: $primaryColor !important;
   color: white !important;
+}
+
+.navbarContent {
+  justify-content: space-between;
 }

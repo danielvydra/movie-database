@@ -48,23 +48,25 @@ function CustomAppBar() {
     return (
         <AppBar position="sticky" className={"navbar"}>
             <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="div"
-                        sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
-                    >
-                        {t("appTitle")}
-                    </Typography>
+                <Toolbar className={"navbarContent"} disableGutters>
+                    <Box sx={{display: "flex",alignItems:"center"}}>
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="div"
+                            sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
+                        >
+                            {t("appTitle")}
+                        </Typography>
 
-                    <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
-                        <Tabs value={currentTab}>
-                            {pages.map((page,i) => (
-                                <Tab key={i} label={page.title} value={page.route} to={page.route} component={Link}
-                                     className={"tabLink"}/>
-                            ))}
-                        </Tabs>
+                        <Box >
+                            <Tabs value={currentTab}>
+                                {pages.map((page, i) => (
+                                    <Tab key={i} label={page.title} value={page.route} to={page.route} component={Link}
+                                         className={"tabLink"}/>
+                                ))}
+                            </Tabs>
+                        </Box>
                     </Box>
 
                     <Box sx={{flexGrow: 0, display: {xs: 'none', md: 'flex'}}}>
