@@ -17,6 +17,7 @@ function MovieSearch() {
     const [page, setPage] = useState<number>(1);
     const [totalResults, setTotalResults] = useState<number>(-1);
     const {t} = useTranslation()
+    document.title = t("searchMovies")
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setMovieTitle(e.target.value)

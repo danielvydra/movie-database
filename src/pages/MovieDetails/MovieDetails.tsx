@@ -29,6 +29,7 @@ function MovieDetails() {
     const [loading, setLoading] = useState<boolean>(true)
     const [isFavorite, setFavorite] = useState<boolean>(false)
     const {t} = useTranslation()
+    document.title = t("movieDetails")
 
     useEffect(() => {
         if (!params?.movieID) return
@@ -217,7 +218,7 @@ function MovieDetails() {
                 <div className={"innerDiv"}>
                     {loading && (
                         <Box>
-                            <Typography>Loading content...</Typography>
+                            <Typography>{t("loadingContent")}</Typography>
                             <CircularProgress/>
                         </Box>
                     )}

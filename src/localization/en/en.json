@@ -10,7 +10,7 @@
   "noResultsFound": "No results found.",
   "pleaseTryAgain": "Please, try again.",
   "search": "Search",
-  "movieDetail": "Movie detail",
+  "movieDetails": "Movie details",
   "pageNotFound_title": "Error - page not found.",
   "pageNotFound_subtitle": "Given path not exists.",
   "enterMovieTitle": "Enter movie title",
@@ -20,5 +20,6 @@
   "noContent_info": "No content to show",
   "incorrectMovieID": "Movie ID may be incorrect",
   "noFurtherResults": "No further results.",
-  "movieCard_tooltip": "Click to display movie details of {{title}} on new tab"
+  "movieCard_tooltip": "Click to display movie details of {{title}} on new tab",
+  "loadingContent": "Loading content..."
 }

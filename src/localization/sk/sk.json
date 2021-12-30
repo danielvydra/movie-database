@@ -10,7 +10,7 @@
   "noResultsFound": "Žiadne výsledky neboli nájdené.",
   "pleaseTryAgain": "Prosím, skúste znova.",
   "search": "Vyhľadať",
-  "movieDetail": "Detail filmu",
+  "movieDetails": "Detaily filmu",
   "pageNotFound_title": "Chyba - stránka nebola nájdená.",
   "pageNotFound_subtitle": "Zadaná cesta neexistuje.",
   "enterMovieTitle": "Zadajte názov filmu",
@@ -20,5 +20,6 @@
   "noContent_info": "Žiadny obsah na zobrazenie",
   "incorrectMovieID": "ID filmu je pravdepodobne nesprávne",
   "noFurtherResults": "Žiadne ďalšie výsledky.",
-  "movieCard_tooltip": "Kliknutím zobrazíte detaily filmu {{title}} na novej karte"
+  "movieCard_tooltip": "Kliknutím zobrazíte detaily filmu {{title}} na novej karte",
+  "loadingContent": "Načítanie obsahu..."
 }

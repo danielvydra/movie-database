@@ -5,6 +5,7 @@ import React from "react";
 
 function FavoriteMovies() {
     const {t} = useTranslation()
+    document.title = t("favoriteMovies")
 
     return (
         <div>
