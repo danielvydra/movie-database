@@ -9,7 +9,7 @@ export function setMovies(movies: IMovieInfo[]) {
     }
 }
 
-export function setMovieDetails(details: IMovieDetails) {
+export function setMovieDetails(details: IMovieDetails | null) {
     return {
         type: actionTypes.SET_MOVIE_DETAILS,
         payload: details

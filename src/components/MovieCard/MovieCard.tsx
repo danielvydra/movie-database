@@ -30,7 +30,7 @@ const MovieCard: React.FC<IMovieProps> = ({movie}) => {
                     <CardMedia
                         component="img"
                         height="500"
-                        image={movie.imgLink}
+                        image={movie.imgLink ? movie.imgLink : require("../../assets/image-not-found.jpg")}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">

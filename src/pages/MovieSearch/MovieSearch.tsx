@@ -11,10 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import InfiniteScroll from "react-infinite-scroll-component";
 import {useDispatch, useSelector} from "react-redux";
 import {setMovies} from "../../redux/actions";
-
-interface RootState {
-    movies: IMovieInfo[]
-}
+import {RootState} from "../../redux/actions/actionTypes";
 
 function MovieSearch() {
     const [movieTitle, setMovieTitle] = useState<string>("");

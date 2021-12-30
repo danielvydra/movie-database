@@ -7,35 +7,36 @@ import {
     CircularProgress,
     IconButton,
     LinearProgress,
-    Paper, Stack, Tooltip,
+    Paper, Tooltip,
     Typography
 } from "@mui/material";
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
 import {useTranslation} from "react-i18next";
 import React, {useEffect, useState} from "react";
-import {IMovieDetails} from "../../models/MovieDetailsModel";
 import {createMovieDetailsStructure} from "../../webServices/utils/MovieDetailsStructure";
 import {v4 as uuidv4} from 'uuid';
 import StarIcon from '@mui/icons-material/Star';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import "./styles.scss"
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
-
-let dateFormat = "DD MMM YYYY"
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../redux/actions/actionTypes";
+import {setMovieDetails} from "../../redux/actions";
+import {dateFormat} from "../../consts/Consts";
 
 function MovieDetails() {
     const params = useParams();
-    const [details, setDetails] = useState<IMovieDetails | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [isFavorite, setFavorite] = useState<boolean>(false)
+    const details = useSelector((state: RootState) => state.movieDetails)
+    const dispatch = useDispatch()
     const {t} = useTranslation()
     document.title = t("movieDetails")
 
     useEffect(() => {
         if (!params?.movieID) return
         createMovieDetailsStructure(params.movieID).then((r) => {
-            console.log("details", r)
-            setDetails(r)
+            dispatch(setMovieDetails(r))
         })
         setLoading(false)
     }, []);
@@ -214,7 +215,7 @@ function MovieDetails() {
         <>
             <CustomAppBar/>
 
-            <div >
+            <div>
                 <div className={"innerDiv"}>
                     {loading && (
                         <Box>
