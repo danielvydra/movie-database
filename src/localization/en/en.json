@@ -21,5 +21,7 @@
   "incorrectMovieID": "Movie ID may be incorrect",
   "noFurtherResults": "No further results.",
   "movieCard_tooltip": "Click to display movie details of {{title}} on new tab",
-  "loadingContent": "Loading content..."
+  "loadingContent": "Loading content...",
+  "noFavoriteMovies": "You have no favorite movies",
+  "noFavoriteMovies_hint": "Search movie, display details and add to favorites"
 }

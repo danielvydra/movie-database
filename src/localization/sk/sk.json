@@ -21,5 +21,7 @@
   "incorrectMovieID": "ID filmu je pravdepodobne nesprávne",
   "noFurtherResults": "Žiadne ďalšie výsledky.",
   "movieCard_tooltip": "Kliknutím zobrazíte detaily filmu {{title}} na novej karte",
-  "loadingContent": "Načítanie obsahu..."
+  "loadingContent": "Načítanie obsahu...",
+  "noFavoriteMovies": "Nemáte žiadné obľúbené filmy",
+  "noFavoriteMovies_hint": "Vyhľadajte film, zobrazte detaily a pridajte film medzi obľúbené"
 }

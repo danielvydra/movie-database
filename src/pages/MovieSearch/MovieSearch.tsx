@@ -3,7 +3,7 @@ import {Box, Button, CircularProgress, InputAdornment, TextField, Tooltip, Typog
 import "./styles.scss"
 import SearchIcon from '@mui/icons-material/Search';
 import MovieCard from "../../components/MovieCard/MovieCard";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {createMovieInfoStructure} from "../../utils/MovieInfoStructure";
 import {useTranslation} from "react-i18next";
@@ -23,6 +23,10 @@ function MovieSearch() {
     const {t} = useTranslation()
     document.title = t("searchMovies")
 
+    useEffect(() => {
+        dispatch(setMovies(null))
+    }, [])
+
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setMovieTitle(e.target.value)
     }
@@ -31,7 +35,6 @@ function MovieSearch() {
         setLoading(true)
         setPage(1)
         await fetchData(true)
-        setLoading(false)
     }
 
     const fetchData = async (newSearch: boolean = false) => {
@@ -42,6 +45,7 @@ function MovieSearch() {
 
                 setTotalResults(r?.totalResults)
                 setPage(prev => prev + 1)
+                setLoading(false)
             }
         })
     }
