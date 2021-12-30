@@ -7,11 +7,12 @@ export enum MovieTypes {
     episode = "episode"
 }
 
-export async function fetchMovies(title: string, year?: number, type: MovieTypes = MovieTypes.movie) {
+export async function fetchMovies(title: string, page: number = 1, year?: number, type: MovieTypes = MovieTypes.movie) {
     let url = `${config.BACKEND_URL}/?apikey=${config.API_KEY}`
     if (year) url += `&y=${year}`
     url += `&type=${type}`
     url += `&s=${title}`
+    url += `&page=${page}`
 
     return await axios.get(url).then(r => r.data).catch(() => null)
 }

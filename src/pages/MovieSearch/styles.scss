@@ -15,3 +15,17 @@
   margin-top: 14rem;
   text-align: center;
 }
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.noFurtherResults {
+  text-align: center;
+  margin: 2rem;
+  align-items: center;
+  display: flex;
+}

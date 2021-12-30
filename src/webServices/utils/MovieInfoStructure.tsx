@@ -1,13 +1,21 @@
 import {fetchMovies, MovieTypes} from "../api/MovieListService";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 
-export async function createMovieInfoStructure(title: string, year?: number, type: MovieTypes = MovieTypes.movie)
-    : Promise<IMovieInfo [] | null> {
-    let data = await fetchMovies(title, year, type);
+export interface IMoviesInfoWrapper {
+    movies: IMovieInfo [],
+    totalResults: number,
+}
+
+export async function createMovieInfoStructure(
+    title: string, page: number = 1, year?: number, type: MovieTypes = MovieTypes.movie
+): Promise<IMoviesInfoWrapper | null> {
+    let data = await fetchMovies(title, page, year, type);
     console.log(data)
     if (!data) return null
 
-    return data.Error ? [] : data.Search.map((m: any) => {
+    if (data.Error) return {movies: [], totalResults: 0}
+
+    let movies: IMovieInfo[] = data.Search.map((m: any) => {
         let movie: IMovieInfo = {
             id: m.imdbID,
             title: m.Title,
@@ -15,5 +23,6 @@ export async function createMovieInfoStructure(title: string, year?: number, typ
             year: m.Year
         }
         return movie;
-    })
+    });
+    return {movies: movies, totalResults: data.totalResults}
 }

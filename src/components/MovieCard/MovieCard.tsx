@@ -8,18 +8,20 @@ import {IMovieInfo} from "../../models/MovieInfoModel";
 import {AllRoutes} from "../../consts/AllRoutes";
 import {Link} from "react-router-dom";
 import "./styles.scss"
+import {useTranslation} from "react-i18next";
 
 interface IMovieProps {
     movie: IMovieInfo
 }
 
 const MovieCard: React.FC<IMovieProps> = ({movie}) => {
+    const {t} = useTranslation()
 
     return (
         <Tooltip followCursor arrow
                  title={
                      <Typography fontSize={15}>
-                         {`Click to display movie details of ${movie.title}`}
+                         {t("movieCard_tooltip", {title: movie.title})}
                      </Typography>
                  }
         >

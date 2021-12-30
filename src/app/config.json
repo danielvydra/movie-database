@@ -1,4 +1,5 @@
 {
   "BACKEND_URL": "https://www.omdbapi.com/",
-  "API_KEY": "62c44444"
+  "_API_KEY": "62c44444",
+  "API_KEY": "a7da6883"
 }

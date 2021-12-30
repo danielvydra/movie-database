@@ -13,5 +13,12 @@
   "movieDetail": "Detail filmu",
   "pageNotFound_title": "Chyba - stránka nebola nájdená.",
   "pageNotFound_subtitle": "Zadaná cesta neexistuje.",
-  "enterMovieTitle": "Zadajte názov filmu"
+  "enterMovieTitle": "Zadajte názov filmu",
+  "removeFavoriteMovie_tooltip": "Odobrať film z obľúbených",
+  "addFavoriteMovie_tooltip": "Označiť film ako obľúbený",
+  "metascore": "Metaskóre",
+  "noContent_info": "Žiadny obsah na zobrazenie",
+  "incorrectMovieID": "ID filmu je pravdepodobne nesprávne",
+  "noFurtherResults": "Žiadne ďalšie výsledky.",
+  "movieCard_tooltip": "Kliknutím zobrazíte detaily filmu {{title}} na novej karte"
 }

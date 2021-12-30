@@ -18,5 +18,7 @@
   "addFavoriteMovie_tooltip": "Mark movie as favorite",
   "metascore": "Metascore",
   "noContent_info": "No content to show",
-  "incorrectMovieID": "Movie ID may be incorrect"
+  "incorrectMovieID": "Movie ID may be incorrect",
+  "noFurtherResults": "No further results.",
+  "movieCard_tooltip": "Click to display movie details of {{title}} on new tab"
 }
