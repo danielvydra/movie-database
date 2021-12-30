@@ -13,7 +13,7 @@ import {
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
 import {useTranslation} from "react-i18next";
 import React, {useEffect, useState} from "react";
-import {createMovieDetailsStructure} from "../../webServices/utils/MovieDetailsStructure";
+import {createMovieDetailsStructure} from "../../utils/MovieDetailsStructure";
 import {v4 as uuidv4} from 'uuid';
 import StarIcon from '@mui/icons-material/Star';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
@@ -22,7 +22,9 @@ import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/actions/actionTypes";
 import {setMovieDetails} from "../../redux/actions";
-import {dateFormat} from "../../consts/Consts";
+import {dateFormat, favoriteMoviesKey} from "../../consts/Consts";
+import {IMovieInfo} from "../../models/MovieInfoModel";
+import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
 
 function MovieDetails() {
     const params = useParams();
@@ -37,9 +39,20 @@ function MovieDetails() {
         if (!params?.movieID) return
         createMovieDetailsStructure(params.movieID).then((r) => {
             dispatch(setMovieDetails(r))
+            setFavorite(isInFavorites(params.movieID ?? ""))
+            setLoading(false)
         })
-        setLoading(false)
     }, []);
+
+    const createMovieInfoObj = () => {
+        let movieInfo: IMovieInfo = {
+            id: details.id,
+            title: details.title,
+            imgLink: details.imgLink,
+            year: details.year
+        }
+        return movieInfo
+    }
 
     const getLanguages = () => {
         return details?.languages === null ?
@@ -89,6 +102,13 @@ function MovieDetails() {
         </Paper>
     }
 
+    const handleFavoriteMovieClick = () => {
+        if (isFavorite) removeFavoriteMovie(createMovieInfoObj())
+        else addFavoriteMovie(createMovieInfoObj())
+
+        setFavorite((prev) => !prev)
+    }
+
     const getStarIcon = () => {
         return (
             <Tooltip arrow title={
@@ -96,7 +116,7 @@ function MovieDetails() {
                     {isFavorite ? t("removeFavoriteMovie_tooltip") : t("addFavoriteMovie_tooltip")}
                 </Typography>} placement={"right"}
             >
-                <IconButton className={"iconButton"} onClick={() => setFavorite((prev) => !prev)}>
+                <IconButton className={"iconButton"} onClick={() => handleFavoriteMovieClick()}>
                     {isFavorite ? <StarIcon fontSize={"large"}/> : <StarOutlineIcon fontSize={"large"}/>}
                 </IconButton>
             </Tooltip>

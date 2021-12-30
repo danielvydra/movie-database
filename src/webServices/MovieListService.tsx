@@ -1,5 +1,5 @@
 import axios from "axios";
-import config from "../../app/config.json"
+import config from "../app/config.json"
 
 export enum MovieTypes {
     movie = "movie",

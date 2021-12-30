@@ -1,7 +1,7 @@
-import {fetchMovieDetails, PlotTypes} from "../api/MovieDetailsService";
-import {IMovieDetails, IMovieRating} from "../../models/MovieDetailsModel";
+import {fetchMovieDetails, PlotTypes} from "../webServices/MovieDetailsService";
+import {IMovieDetails, IMovieRating} from "../models/MovieDetailsModel";
 import moment from "moment";
-import {dateFormat, emptyVal} from "../../consts/Consts";
+import {dateFormat, emptyVal} from "../consts/Consts";
 
 export async function createMovieDetailsStructure(id: string, plot: PlotTypes = PlotTypes.full)
     : Promise<IMovieDetails | null> {

@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MovieCard from "../../components/MovieCard/MovieCard";
 import React, {useState} from "react";
 import {IMovieInfo} from "../../models/MovieInfoModel";
-import {createMovieInfoStructure} from "../../webServices/utils/MovieInfoStructure";
+import {createMovieInfoStructure} from "../../utils/MovieInfoStructure";
 import {useTranslation} from "react-i18next";
 import EditIcon from '@mui/icons-material/Edit';
 import InfiniteScroll from "react-infinite-scroll-component";

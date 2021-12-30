@@ -1,6 +1,6 @@
-import {fetchMovies, MovieTypes} from "../api/MovieListService";
-import {IMovieInfo} from "../../models/MovieInfoModel";
-import {emptyVal} from "../../consts/Consts"
+import {fetchMovies, MovieTypes} from "../webServices/MovieListService";
+import {IMovieInfo} from "../models/MovieInfoModel";
+import {emptyVal} from "../consts/Consts"
 
 export interface IMoviesInfoWrapper {
     movies: IMovieInfo [],

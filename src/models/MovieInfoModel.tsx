@@ -1,6 +1,6 @@
 export interface IMovieInfo {
     id: string,
     title: string,
-    year: number,
-    imgLink: string
+    year: number | null,
+    imgLink: string | null
 }
