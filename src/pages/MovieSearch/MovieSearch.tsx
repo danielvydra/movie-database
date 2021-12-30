@@ -9,13 +9,20 @@ import {createMovieInfoStructure} from "../../webServices/utils/MovieInfoStructu
 import {useTranslation} from "react-i18next";
 import EditIcon from '@mui/icons-material/Edit';
 import InfiniteScroll from "react-infinite-scroll-component";
+import {useDispatch, useSelector} from "react-redux";
+import {setMovies} from "../../redux/actions";
+
+interface RootState {
+    movies: IMovieInfo[]
+}
 
 function MovieSearch() {
     const [movieTitle, setMovieTitle] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
-    const [movies, setMovies] = useState<IMovieInfo[] | null>(null);
+    const movies = useSelector((state: RootState) => state.movies)
     const [page, setPage] = useState<number>(1);
     const [totalResults, setTotalResults] = useState<number>(-1);
+    const dispatch = useDispatch()
     const {t} = useTranslation()
     document.title = t("searchMovies")
 
@@ -33,8 +40,8 @@ function MovieSearch() {
     const fetchData = async (newSearch: boolean = false) => {
         await createMovieInfoStructure(movieTitle.trim(), newSearch ? 1 : page).then(r => {
             if (r?.movies) {
-                if (!movies || newSearch) setMovies(r?.movies)
-                else setMovies(movies?.concat(r?.movies))
+                if (!movies || newSearch) dispatch(setMovies(r?.movies))
+                else dispatch(setMovies(movies?.concat(r?.movies)))
 
                 setTotalResults(r?.totalResults)
                 setPage(prev => prev + 1)

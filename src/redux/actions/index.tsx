@@ -1,0 +1,17 @@
+import {IMovieInfo} from "../../models/MovieInfoModel";
+import {IMovieDetails} from "../../models/MovieDetailsModel";
+import * as actionTypes from "./actionTypes"
+
+export function setMovies(movies: IMovieInfo[]) {
+    return {
+        type: actionTypes.SET_MOVIES,
+        payload: movies
+    }
+}
+
+export function setMovieDetails(details: IMovieDetails) {
+    return {
+        type: actionTypes.SET_MOVIE_DETAILS,
+        payload: details
+    }
+}
