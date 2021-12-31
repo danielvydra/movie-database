@@ -1,6 +1,6 @@
 export enum AllRoutes {
-    MovieSearch = "/movie-database/search",
-    MovieDetails = "/movie-database/movie",
-    FavoriteMovies = "/movie-database/favorites",
+    MovieSearch = "/search",
+    MovieDetails = "/movie",
+    FavoriteMovies = "/favorites",
     NonExisting = "*",
 }
