@@ -49,17 +49,17 @@ function CustomAppBar() {
         <AppBar position="sticky" className={"navbar"}>
             <Container maxWidth="xl">
                 <Toolbar className={"navbarContent"} disableGutters>
-                    <Box sx={{display: "flex",alignItems:"center"}}>
+                    <Box sx={{display: "flex", alignItems: "center"}}>
                         <Typography
                             variant="h5"
                             noWrap
                             component="div"
-                            sx={{mr: 2, display: {xs: 'none', md: 'flex'}}}
+                            sx={{mr: 2, fontWeight: "bold"}}
                         >
                             {t("appTitle")}
                         </Typography>
 
-                        <Box >
+                        <Box>
                             <Tabs value={currentTab}>
                                 {pages.map((page, i) => (
                                     <Tab key={i} label={page.title} value={page.route} to={page.route} component={Link}

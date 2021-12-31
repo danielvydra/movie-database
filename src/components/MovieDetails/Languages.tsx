@@ -15,20 +15,16 @@ export default function Languages() {
             <Typography>No languages to display</Typography>
             :
             details?.languages.map(language => {
-                return <Chip className={"chip"} key={uuidv4()} label={language}/>
+                return <Chip className={"chip_language"} key={uuidv4()} label={language}/>
             })
     }
 
     return (
-        <Box className={"row_title"}>
-
-            <Box sx={{mt: "2rem"}}>
-                <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("languages")}</Typography>
-                <Box sx={{display: "flex", flexWrap: "wrap", mt: "1.5rem"}}>
-                    {getLanguages()}
-                </Box>
+        <Box>
+            <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("languages")}</Typography>
+            <Box sx={{display: "flex", flexWrap: "wrap", mt: "1.5rem"}}>
+                {getLanguages()}
             </Box>
-
         </Box>
     )
 }

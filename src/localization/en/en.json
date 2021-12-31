@@ -32,6 +32,13 @@
   "ratings": "Ratings",
   "description": "Description",
   "languages": "Languages",
-  "genres": "Genres"
+  "genres": "Genres",
+  "otherInfo": "Other information",
+  "imdbVotes": "imDB votes",
+  "boxOffice": "Box office",
+  "awards": "Awards",
+  "production": "Production",
+  "releaseDate": "Release date",
+  "website": "Website"
 
 }

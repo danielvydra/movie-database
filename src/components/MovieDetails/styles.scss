@@ -1,4 +1,16 @@
 .chip {
   margin-right: 1rem;
   font-size: 20px !important;
+
+  &_genre {
+    @extend .chip;
+    color: white !important;
+    background-color: #9c27b0 !important;
+  }
+
+  &_language {
+    @extend .chip;
+    color: white !important;
+    background-color: #81c784 !important;
+  }
 }

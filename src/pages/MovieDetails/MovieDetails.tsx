@@ -33,6 +33,7 @@ import Title from "../../components/MovieDetails/Title";
 import Subtitle from "../../components/MovieDetails/Subtitle";
 import Languages from "../../components/MovieDetails/Languages";
 import Genres from "../../components/MovieDetails/Genres";
+import OtherInfo from "../../components/MovieDetails/OtherInfo";
 
 function MovieDetails() {
     const params = useParams();
@@ -50,18 +51,6 @@ function MovieDetails() {
         })
     }, []);
 
-    const getInfo = () => {
-        return <>
-            <Typography>{details?.production}</Typography>
-            <Typography>{details?.imdbVotes}</Typography>
-            <Typography>{details?.boxOffice}</Typography>
-            <Typography>{details?.awards}</Typography>
-            <Typography>{details?.production}</Typography>
-            <Typography>{details?.released?.format(dateFormat)}</Typography>
-            <Typography>{details?.DVD?.format(dateFormat)}</Typography>
-            <Typography>{details?.website}</Typography>
-        </>
-    }
 
     const getContent = () => {
         return (
@@ -72,12 +61,12 @@ function MovieDetails() {
                 <Ratings/>
                 <People/>
 
-                <Box sx={{display:"flex",flexWrap:"wrap"}}>
+                <Box sx={{display: "flex", flexWrap: "wrap", alignItems: "flex-start"}}>
                     <Languages/>
                     <Genres/>
+                    <OtherInfo/>
                 </Box>
 
-                {getInfo()}
             </>
         )
     }

@@ -95,7 +95,7 @@ function FavoriteMovies() {
 
             <Box className={"content"}>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
-                    <Typography variant={"h3"}>{t("favoriteMovies")}</Typography>
+                    <Typography sx={{fontWeight: "bold"}} variant={"h3"}>{t("favoriteMovies")}</Typography>
                 </Box>
 
                 {loading ? <CircularProgress/> : getContent()}

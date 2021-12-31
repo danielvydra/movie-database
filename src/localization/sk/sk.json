@@ -32,5 +32,12 @@
   "ratings": "Hodnotenia",
   "description": "Popis",
   "languages": "Jazyky",
-  "genres": "Žánre"
+  "genres": "Žánre",
+  "otherInfo": "Ďalšie informácie",
+  "imdbVotes": "imDB hlasy",
+  "boxOffice": "Zárobok",
+  "awards": "Ocenenia",
+  "production": "Produkcia",
+  "releaseDate": "Dátum vydania",
+  "website": "Webstránka"
 }

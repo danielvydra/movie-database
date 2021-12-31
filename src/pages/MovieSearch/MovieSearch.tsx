@@ -109,7 +109,7 @@ function MovieSearch() {
 
             <Box className={"content"}>
                 <Box sx={{display: "flex", justifyContent: "center"}}>
-                    <Typography variant={"h3"}>{t("searchMovies")}</Typography>
+                    <Typography sx={{fontWeight: "bold"}} variant={"h3"}>{t("searchMovies")}</Typography>
                     <TextField
                         id={"searchField"}
                         value={movieTitle}

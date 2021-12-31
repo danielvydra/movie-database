@@ -24,7 +24,7 @@ export async function createMovieDetailsStructure(id: string, plot: PlotTypes = 
             genres: data.Genre === emptyVal ? null : (data.Genre.includes(",") ? data.Genre.split(", ") : [data.Genre]),
             imdbRating: data.imdbRating === emptyVal ? null : parseFloat(data.imdbRating),
             languages: data.Language === emptyVal ? null : (data.Language.includes(",") ? data.Language.split(", ") : [data.Language]),
-            imdbVotes: data.imdbVotes === emptyVal ? null : parseInt(data.imdbVotes),
+            imdbVotes: data.imdbVotes === emptyVal ? null : parseInt(data.imdbVotes.replace(',','')),
             metascore: data.Metascore === emptyVal ? null : parseInt(data.Metascore),
             plot: data.Plot === emptyVal ? null : data.Plot,
             production: data.Production === emptyVal ? null : data.Production,

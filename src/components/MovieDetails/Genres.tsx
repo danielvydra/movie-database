@@ -15,20 +15,16 @@ export default function Genres() {
             <Typography>No genres to display</Typography>
             :
             details?.genres.map(genre => {
-                return <Chip className={"chip"} key={uuidv4()} label={genre}/>
+                return <Chip className={"chip_genre"} key={uuidv4()} label={genre}/>
             })
     }
 
     return (
-        <Box className={"row_title"}>
-
-            <Box sx={{mt: "2rem", ml: "2rem"}}>
-                <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("genres")}</Typography>
-                <Box sx={{display: "flex", flexWrap: "wrap", mt: "1.5rem"}}>
-                    {getGenres()}
-                </Box>
+        <Box sx={{ml: "2rem"}}>
+            <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("genres")}</Typography>
+            <Box sx={{display: "flex", flexWrap: "wrap", mt: "1.5rem"}}>
+                {getGenres()}
             </Box>
-
         </Box>
     )
 }
