@@ -31,7 +31,7 @@ export default function People() {
         details?.actors === null ?
             <Typography>No actors to display</Typography>
             :
-            <Box sx={{mt: "2rem"}}>
+            <Box sx={{mt: "3rem"}}>
                 <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("people")}</Typography>
                 <Box sx={{display: "flex", flexWrap: "wrap", mt: "1.5rem"}}>
                     {getCards(t("director"), details?.director)}

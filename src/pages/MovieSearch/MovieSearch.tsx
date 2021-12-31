@@ -1,10 +1,9 @@
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
-import {Box, Button, CircularProgress, InputAdornment, TextField, Tooltip, Typography} from "@mui/material";
+import {Box, Button, CircularProgress, InputAdornment, TextField, Typography} from "@mui/material";
 import "./styles.scss"
 import SearchIcon from '@mui/icons-material/Search';
 import MovieCard from "../../components/MovieCard/MovieCard";
 import React, {useEffect, useState} from "react";
-import {IMovieInfo} from "../../models/MovieInfoModel";
 import {createMovieInfoStructure} from "../../utils/MovieInfoStructure";
 import {useTranslation} from "react-i18next";
 import EditIcon from '@mui/icons-material/Edit';

@@ -1,31 +1,17 @@
 import {useParams} from "react-router-dom";
 import {
-    Avatar,
     Box,
-    Card,
-    CardMedia,
-    Chip,
     CircularProgress,
-    IconButton,
-    LinearProgress,
-    Paper, Tooltip,
     Typography
 } from "@mui/material";
 import CustomAppBar from "../../components/CustomAppBar/CustomAppBar";
 import {useTranslation} from "react-i18next";
 import React, {useEffect, useState} from "react";
 import {createMovieDetailsStructure} from "../../utils/MovieDetailsStructure";
-import {v4 as uuidv4} from 'uuid';
-import StarIcon from '@mui/icons-material/Star';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import "./styles.scss"
-import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../redux/actions/actionTypes";
 import {setMovieDetails} from "../../redux/actions";
-import {dateFormat, favoriteMoviesKey} from "../../consts/Consts";
-import {IMovieInfo} from "../../models/MovieInfoModel";
-import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
 import People from "../../components/MovieDetails/People";
 import Ratings from "../../components/MovieDetails/Ratings";
 import PosterAndPlot from "../../components/MovieDetails/PosterAndPlot";
@@ -61,7 +47,7 @@ function MovieDetails() {
                 <Ratings/>
                 <People/>
 
-                <Box sx={{display: "flex", flexWrap: "wrap", alignItems: "flex-start"}}>
+                <Box sx={{display: "flex", flexWrap: "wrap", alignItems: "flex-start", mt: "2rem"}}>
                     <Languages/>
                     <Genres/>
                     <OtherInfo/>
@@ -72,26 +58,26 @@ function MovieDetails() {
     }
 
     const noContentMessage = () => {
-        return <>
-            <Typography variant={"h2"}>{t("noContent_info")}</Typography>
-            <Typography variant={"h5"}>{t("incorrectMovieID")}</Typography>
-        </>
+        return (
+            <>
+                <Typography variant={"h2"}>{t("noContent_info")}</Typography>
+                <Typography variant={"h5"}>{t("incorrectMovieID")}</Typography>
+            </>
+        )
     }
 
     return (
         <>
             <CustomAppBar/>
 
-            <div>
-                <div className={"innerDiv"}>
-                    {loading && (
-                        <Box>
-                            <Typography>{t("loadingContent")}</Typography>
-                            <CircularProgress/>
-                        </Box>
-                    )}
-                    {!details ? noContentMessage() : getContent()}
-                </div>
+            <div className={"innerDiv"}>
+                {loading && (
+                    <Box>
+                        <Typography>{t("loadingContent")}</Typography>
+                        <CircularProgress/>
+                    </Box>
+                )}
+                {!details ? noContentMessage() : getContent()}
             </div>
 
         </>

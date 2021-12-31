@@ -33,7 +33,7 @@ export default function Ratings() {
     }
 
     return (
-        <Box sx={{mt: "2rem"}}>
+        <Box sx={{mt: "3rem"}}>
             <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("ratings")}</Typography>
             {details?.ratings == null ?
                 <Typography>No ratings to display</Typography>
