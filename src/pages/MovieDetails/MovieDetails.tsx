@@ -28,6 +28,7 @@ import {IMovieInfo} from "../../models/MovieInfoModel";
 import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
 import People from "../../components/People";
 import Ratings from "../../components/Ratings";
+import PosterAndPlot from "../../components/PosterAndPlot";
 
 function MovieDetails() {
     const params = useParams();
@@ -75,26 +76,6 @@ function MovieDetails() {
             })
     }
 
-    const getWriters = () => {
-        return details?.writers === null ?
-            <Typography>No writers to display</Typography>
-            :
-            details?.writers.map(writer => {
-                return <Chip key={uuidv4()} label={writer}/>
-            })
-    }
-
-    const getPlot = () => {
-        return <Paper className={"paper_plot"}>
-            {details?.plot === null ?
-                <Typography>No plot to display</Typography>
-                : <>
-                    <Typography sx={{fontWeight: "bold", mb: "1rem"}} variant={"h4"}>{"Description"}</Typography>
-                    <Typography fontSize={"larger"}>{details?.plot}</Typography>
-                </>
-            }
-        </Paper>
-    }
 
     const handleFavoriteMovieClick = () => {
         if (isFavorite) removeFavoriteMovie(createMovieInfoObj())
@@ -125,7 +106,6 @@ function MovieDetails() {
 
     const getInfo = () => {
         return <>
-            <Typography>{details?.director}</Typography>
             <Typography>{details?.production}</Typography>
             <Typography>{details?.imdbRating}</Typography>
             <Typography>{details?.imdbVotes}</Typography>
@@ -147,17 +127,6 @@ function MovieDetails() {
         return <Typography variant={"h5"}>{str}</Typography>
     }
 
-    const getPoster = () => {
-        return <Box sx={{width: 300, height: 420}}>
-            <Card sx={{width: 300}}>
-                <CardMedia
-                    component="img"
-                    height="420"
-                    image={details?.imgLink ?? undefined}
-                />
-            </Card>
-        </Box>
-    }
 
     const getContent = () => {
         return (
@@ -172,14 +141,10 @@ function MovieDetails() {
                     {getMetascore()}
                 </Box>
 
-                <Box className={"row_plot_desc"}>
-                    {getPoster()}
-                    {getPlot()}
-                </Box>
+                <PosterAndPlot/>
 
                 {getLanguages()}
                 {getGenres()}
-                {getWriters()}
                 <People/>
                 {getInfo()}
                 <Ratings/>
