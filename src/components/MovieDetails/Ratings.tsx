@@ -1,7 +1,7 @@
 import {Avatar, Box, LinearProgress, Paper, Typography} from "@mui/material";
 import React from "react";
 import {useSelector} from "react-redux";
-import {RootState} from "../redux/actions/actionTypes";
+import {RootState} from "../../redux/actions/actionTypes";
 import {v4 as uuidv4} from 'uuid';
 import {useTranslation} from "react-i18next";
 

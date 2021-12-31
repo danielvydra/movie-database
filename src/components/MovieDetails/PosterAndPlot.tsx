@@ -1,7 +1,7 @@
 import {Avatar, Box, Card, CardMedia, Paper, Typography} from "@mui/material";
 import React from "react";
 import {useSelector} from "react-redux";
-import {RootState} from "../redux/actions/actionTypes";
+import {RootState} from "../../redux/actions/actionTypes";
 import {v4 as uuidv4} from 'uuid';
 import {useTranslation} from "react-i18next";
 
@@ -15,7 +15,7 @@ export default function PosterAndPlot() {
                 <CardMedia
                     component="img"
                     height="420"
-                    image={details?.imgLink ?? require("../assets/image-not-found.jpg")}
+                    image={details?.imgLink ?? require("../../assets/image-not-found.jpg")}
                 />
             </Card>
         </Box>
@@ -26,7 +26,7 @@ export default function PosterAndPlot() {
             {details?.plot === null ?
                 <Typography>No plot to display</Typography>
                 : <>
-                    <Typography sx={{fontWeight: "bold", mb: "1rem"}} variant={"h4"}>{"Description"}</Typography>
+                    <Typography sx={{fontWeight: "bold", mb: "1rem"}} variant={"h4"}>{t("description")}</Typography>
                     <Typography fontSize={"larger"}>{details?.plot}</Typography>
                 </>
             }

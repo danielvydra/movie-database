@@ -26,11 +26,13 @@ import {setMovieDetails} from "../../redux/actions";
 import {dateFormat, favoriteMoviesKey} from "../../consts/Consts";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
-import People from "../../components/People";
-import Ratings from "../../components/Ratings";
-import PosterAndPlot from "../../components/PosterAndPlot";
-import Title from "../../components/Title";
-import Subtitle from "../../components/Subtitle";
+import People from "../../components/MovieDetails/People";
+import Ratings from "../../components/MovieDetails/Ratings";
+import PosterAndPlot from "../../components/MovieDetails/PosterAndPlot";
+import Title from "../../components/MovieDetails/Title";
+import Subtitle from "../../components/MovieDetails/Subtitle";
+import Languages from "../../components/MovieDetails/Languages";
+import Genres from "../../components/MovieDetails/Genres";
 
 function MovieDetails() {
     const params = useParams();
@@ -47,26 +49,6 @@ function MovieDetails() {
             setLoading(false)
         })
     }, []);
-
-
-    const getLanguages = () => {
-        return details?.languages === null ?
-            <Typography>No languages to display</Typography>
-            :
-            details?.languages.map(language => {
-                return <Chip key={uuidv4()} label={language}/>
-            })
-    }
-
-    const getGenres = () => {
-        return details?.genres === null ?
-            <Typography>No genres to display</Typography>
-            :
-            details?.genres.map(genre => {
-                return <Chip key={uuidv4()} label={genre}/>
-            })
-    }
-
 
     const getInfo = () => {
         return <>
@@ -90,8 +72,11 @@ function MovieDetails() {
                 <Ratings/>
                 <People/>
 
-                {getLanguages()}
-                {getGenres()}
+                <Box sx={{display:"flex",flexWrap:"wrap"}}>
+                    <Languages/>
+                    <Genres/>
+                </Box>
+
                 {getInfo()}
             </>
         )

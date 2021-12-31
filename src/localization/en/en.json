@@ -29,6 +29,9 @@
   "writer": "Writer",
   "people": "People",
   "source": "Source",
-  "ratings": "Ratings"
+  "ratings": "Ratings",
+  "description": "Description",
+  "languages": "Languages",
+  "genres": "Genres"
 
 }

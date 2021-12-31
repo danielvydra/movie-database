@@ -29,5 +29,8 @@
   "writer": "Scenárista",
   "people": "Ľudia",
   "source": "Zdroj",
-  "ratings": "Hodnotenia"
+  "ratings": "Hodnotenia",
+  "description": "Popis",
+  "languages": "Jazyky",
+  "genres": "Žánre"
 }
