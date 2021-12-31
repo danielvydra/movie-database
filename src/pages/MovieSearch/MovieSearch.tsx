@@ -92,6 +92,14 @@ function MovieSearch() {
         )
     }
 
+    const getLoader = () => {
+        return (
+            <Box className={"noContent"}>
+                <CircularProgress size={100}/>
+            </Box>
+        )
+    }
+
     const getContent = () => {
         if (!movies) {
             return getNothingToDisplayContent()
@@ -128,7 +136,7 @@ function MovieSearch() {
                             onClick={handleSubmit} endIcon={<SearchIcon/>}>{t("search")}</Button>
                 </Box>
 
-                {loading ? <CircularProgress/> : getContent()}
+                {loading ? getLoader() : getContent()}
             </Box>
         </>
     );

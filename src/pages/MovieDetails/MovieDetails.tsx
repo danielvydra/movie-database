@@ -72,9 +72,9 @@ function MovieDetails() {
 
             <div className={"innerDiv"}>
                 {loading && (
-                    <Box>
+                    <Box className={"noContent"}>
                         <Typography>{t("loadingContent")}</Typography>
-                        <CircularProgress/>
+                        <CircularProgress size={100}/>
                     </Box>
                 )}
                 {!details ? noContentMessage() : getContent()}
