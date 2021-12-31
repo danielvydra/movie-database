@@ -29,11 +29,12 @@ import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/
 import People from "../../components/People";
 import Ratings from "../../components/Ratings";
 import PosterAndPlot from "../../components/PosterAndPlot";
+import Title from "../../components/Title";
+import Subtitle from "../../components/Subtitle";
 
 function MovieDetails() {
     const params = useParams();
     const [loading, setLoading] = useState<boolean>(true)
-    const [isFavorite, setFavorite] = useState<boolean>(false)
     const details = useSelector((state: RootState) => state.movieDetails)
     const dispatch = useDispatch()
     const {t} = useTranslation()
@@ -43,20 +44,10 @@ function MovieDetails() {
         if (!params?.movieID) return
         createMovieDetailsStructure(params.movieID).then((r) => {
             dispatch(setMovieDetails(r))
-            setFavorite(isInFavorites(params.movieID ?? ""))
             setLoading(false)
         })
     }, []);
 
-    const createMovieInfoObj = () => {
-        let movieInfo: IMovieInfo = {
-            id: details.id,
-            title: details.title,
-            imgLink: details.imgLink,
-            year: details.year
-        }
-        return movieInfo
-    }
 
     const getLanguages = () => {
         return details?.languages === null ?
@@ -77,37 +68,9 @@ function MovieDetails() {
     }
 
 
-    const handleFavoriteMovieClick = () => {
-        if (isFavorite) removeFavoriteMovie(createMovieInfoObj())
-        else addFavoriteMovie(createMovieInfoObj())
-
-        setFavorite((prev) => !prev)
-    }
-
-    const getStarIcon = () => {
-        return (
-            <Tooltip arrow title={
-                <Typography fontSize={15}>
-                    {isFavorite ? t("removeFavoriteMovie_tooltip") : t("addFavoriteMovie_tooltip")}
-                </Typography>} placement={"right"}
-            >
-                <IconButton className={"iconButton"} onClick={() => handleFavoriteMovieClick()}>
-                    {isFavorite ? <StarIcon fontSize={"large"}/> : <StarOutlineIcon fontSize={"large"}/>}
-                </IconButton>
-            </Tooltip>
-        )
-    }
-
-    const getMetascore = () => {
-        return <Chip className={"metascoreChip"} size={"medium"}
-                     label={`${t("metascore")}: ${details?.metascore ?? "---"}`}
-                     color="success" icon={<StarRateRoundedIcon/>}/>
-    }
-
     const getInfo = () => {
         return <>
             <Typography>{details?.production}</Typography>
-            <Typography>{details?.imdbRating}</Typography>
             <Typography>{details?.imdbVotes}</Typography>
             <Typography>{details?.boxOffice}</Typography>
             <Typography>{details?.awards}</Typography>
@@ -118,36 +81,18 @@ function MovieDetails() {
         </>
     }
 
-    const getSubtitle = () => {
-        let str = ""
-        if (details?.year) str += `${details?.year}`
-        if (details?.runtime) str += ` | ${details?.runtime}`
-        if (details?.country) str += ` | ${details?.country}`
-        if (details?.rated) str += ` | ${details?.rated}`
-        return <Typography variant={"h5"}>{str}</Typography>
-    }
-
-
     const getContent = () => {
         return (
             <>
-                <Box className={"row_title"}>
-                    <Typography sx={{fontWeight: "bold"}} variant={"h3"}>{`${details?.title}`}</Typography>
-                    {getStarIcon()}
-                </Box>
-
-                <Box className={"row_title"}>
-                    {getSubtitle()}
-                    {getMetascore()}
-                </Box>
-
+                <Title/>
+                <Subtitle/>
                 <PosterAndPlot/>
+                <Ratings/>
+                <People/>
 
                 {getLanguages()}
                 {getGenres()}
-                <People/>
                 {getInfo()}
-                <Ratings/>
             </>
         )
     }

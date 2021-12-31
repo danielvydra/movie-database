@@ -18,6 +18,20 @@ export default function Ratings() {
     const details = useSelector((state: RootState) => state.movieDetails)
     const {t} = useTranslation()
 
+
+    const getCard = (value: string | null, source: string) => {
+        return (
+            <Paper className={"paper_rating"} key={uuidv4()}>
+                <Box className={"row_title"}>
+                    <LinearProgress className={"ratingProgressbar"} variant={"determinate"} key={uuidv4()}
+                                    value={getRatingValue(value)}/>
+                    <Typography sx={{fontWeight: "bold"}} fontSize={30} key={uuidv4()}>{`${value}`}</Typography>
+                </Box>
+                <Typography key={uuidv4()}>{`${t("source")}: ${source}`}</Typography>
+            </Paper>
+        )
+    }
+
     return (
         <Box sx={{mt: "2rem"}}>
             <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("ratings")}</Typography>
@@ -26,15 +40,7 @@ export default function Ratings() {
                 :
                 <Box className={"row"} sx={{mt: "1.5rem"}}>
                     {details?.ratings.map((rating) => {
-                        return <Paper className={"paper_rating"} key={uuidv4()}>
-                            <Box className={"row_title"}>
-                                <LinearProgress className={"ratingProgressbar"} variant={"determinate"} key={uuidv4()}
-                                                value={getRatingValue(rating.value)}/>
-                                <Typography sx={{fontWeight: "bold"}} fontSize={30}
-                                            key={uuidv4()}>{`${rating.value}`}</Typography>
-                            </Box>
-                            <Typography key={uuidv4()}>{`${t("source")}: ${rating.source}`}</Typography>
-                        </Paper>
+                        return getCard(rating.value, rating?.source ?? "---")
                     })}
                 </Box>
             }
