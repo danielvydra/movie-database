@@ -1,8 +1,7 @@
-import {Avatar, Box, Card, CardMedia, Paper, Typography} from "@mui/material";
+import {Box, Card, CardMedia, Paper, Typography} from "@mui/material";
 import React from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/actions/actionTypes";
-import {v4 as uuidv4} from 'uuid';
 import {useTranslation} from "react-i18next";
 
 export default function PosterAndPlot() {

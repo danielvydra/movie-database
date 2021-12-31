@@ -39,6 +39,9 @@
   "awards": "Awards",
   "production": "Production",
   "releaseDate": "Release date",
-  "website": "Website"
+  "website": "Website",
+  "noGenresToShow": "No genres to display",
+  "noLanguagesToShow": "No languages to display",
+  "noPeopleToShow": "No people to display"
 
 }

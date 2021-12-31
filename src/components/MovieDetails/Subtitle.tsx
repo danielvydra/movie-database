@@ -1,13 +1,8 @@
-import {Avatar, Box, Chip, IconButton, LinearProgress, Paper, Tooltip, Typography} from "@mui/material";
-import React, {useState} from "react";
+import {Box, Chip, Typography} from "@mui/material";
+import React from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/actions/actionTypes";
-import {v4 as uuidv4} from 'uuid';
 import {useTranslation} from "react-i18next";
-import StarIcon from "@mui/icons-material/Star";
-import StarOutlineIcon from "@mui/icons-material/StarOutline";
-import {addFavoriteMovie, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
-import {IMovieInfo} from "../../models/MovieInfoModel";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 
 export default function Subtitle() {

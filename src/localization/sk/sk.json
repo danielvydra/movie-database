@@ -39,5 +39,8 @@
   "awards": "Ocenenia",
   "production": "Produkcia",
   "releaseDate": "Dátum vydania",
-  "website": "Webstránka"
+  "website": "Webstránka",
+  "noGenresToShow": "Žiadne žánre na zobrazenie",
+  "noLanguagesToShow": "Žiadne jazyky na zobrazenie",
+  "noPeopleToShow": "Žiadni ľudia na zobrazenie"
 }

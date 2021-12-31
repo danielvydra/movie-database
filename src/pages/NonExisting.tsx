@@ -9,13 +9,15 @@ function NonExisting() {
         <Box>
             <CustomAppBar/>
 
-            <Typography variant={"h2"}>
-                {t("pageNotFound_title")}
-            </Typography>
+            <Box className={"noContent"}>
+                <Typography variant={"h1"}>
+                    {t("pageNotFound_title")}
+                </Typography>
 
-            <Typography variant={"h5"}>
-                {t("pageNotFound_subtitle")}
-            </Typography>
+                <Typography variant={"h4"}>
+                    {t("pageNotFound_subtitle")}
+                </Typography>
+            </Box>
         </Box>
     );
 }

@@ -27,9 +27,13 @@ export default function People() {
         )
     }
 
+    const checkPeopleInvalid = () => {
+        return !details?.director?.length || !details?.writers?.length || !details?.actors?.length
+    }
+
     return (
-        details?.actors === null ?
-            <Typography>No actors to display</Typography>
+        checkPeopleInvalid() ?
+            <Typography>{t("noPeopleToShow")}</Typography>
             :
             <Box sx={{mt: "3rem"}}>
                 <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("people")}</Typography>

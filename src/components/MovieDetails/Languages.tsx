@@ -12,7 +12,7 @@ export default function Languages() {
 
     const getLanguages = () => {
         return details?.languages === null ?
-            <Typography>No languages to display</Typography>
+            <Typography>{t("noLanguagesToShow")}</Typography>
             :
             details?.languages.map(language => {
                 return <Chip className={"chip_language"} key={uuidv4()} label={language}/>

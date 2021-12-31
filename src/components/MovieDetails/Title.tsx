@@ -1,15 +1,12 @@
-import {Avatar, Box, IconButton, LinearProgress, Paper, Tooltip, Typography} from "@mui/material";
+import {Box, IconButton, Tooltip, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "../../redux/actions/actionTypes";
-import {v4 as uuidv4} from 'uuid';
 import {useTranslation} from "react-i18next";
 import StarIcon from "@mui/icons-material/Star";
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
 import {IMovieInfo} from "../../models/MovieInfoModel";
-import {createMovieDetailsStructure} from "../../utils/MovieDetailsStructure";
-import {setMovieDetails} from "../../redux/actions";
 
 export default function Title() {
     const details = useSelector((state: RootState) => state.movieDetails)

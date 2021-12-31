@@ -12,7 +12,7 @@ export default function Genres() {
 
     const getGenres = () => {
         return details?.genres === null ?
-            <Typography>No genres to display</Typography>
+            <Typography>{t("noGenresToShow")}</Typography>
             :
             details?.genres.map(genre => {
                 return <Chip className={"chip_genre"} key={uuidv4()} label={genre}/>
