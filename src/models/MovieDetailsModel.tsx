@@ -14,7 +14,7 @@ export interface IMovieDetails {
     released: Moment | null,
     rated: string | null,
     genres: string[] | null,
-    director: string | null,
+    director: string[] | null,
     writers: string[] | null,
     actors: string[] | null,
     plot: string | null,

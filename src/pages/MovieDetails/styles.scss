@@ -1,12 +1,11 @@
 @import "./src/app/common";
 
 .innerDiv {
-  width: 80%;
   padding: 4rem 18rem;
 }
 
 .paper {
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 1rem !important;
 
   &_rating {
@@ -41,6 +40,11 @@
     @extend .row;
     align-items: center;
     margin-bottom: 1rem;
+  }
+
+  &_plot_desc {
+    @extend .row;
+    margin-top: 2rem;
   }
 
 }

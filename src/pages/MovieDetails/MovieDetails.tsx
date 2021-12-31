@@ -1,5 +1,6 @@
 import {useParams} from "react-router-dom";
 import {
+    Avatar,
     Box,
     Card,
     CardMedia,
@@ -25,6 +26,7 @@ import {setMovieDetails} from "../../redux/actions";
 import {dateFormat, favoriteMoviesKey} from "../../consts/Consts";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
+import People from "../../components/People";
 
 function MovieDetails() {
     const params = useParams();
@@ -81,21 +83,12 @@ function MovieDetails() {
             })
     }
 
-    const getActors = () => {
-        return details?.actors === null ?
-            <Typography>No actors to display</Typography>
-            :
-            details?.actors.map(actor => {
-                return <Chip key={uuidv4()} label={actor}/>
-            })
-    }
-
     const getPlot = () => {
         return <Paper className={"paper_plot"}>
             {details?.plot === null ?
                 <Typography>No plot to display</Typography>
                 : <>
-                    <Typography variant={"h4"}>{"Description"}</Typography>
+                    <Typography sx={{fontWeight: "bold", mb: "1rem"}} variant={"h4"}>{"Description"}</Typography>
                     <Typography fontSize={"larger"}>{details?.plot}</Typography>
                 </>
             }
@@ -145,25 +138,26 @@ function MovieDetails() {
     }
 
     const getRatings = () => {
-        return <>
-            <Typography variant={"h4"}>Ratings</Typography>
+        return <Box sx={{mt: "2rem"}}>
+            <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("ratings")}</Typography>
             {details?.ratings == null ?
                 <Typography>No ratings to display</Typography>
                 :
-                <Box className={"row"}>
+                <Box className={"row"} sx={{mt: "1.5rem"}}>
                     {details?.ratings.map((rating) => {
                         return <Paper className={"paper_rating"} key={uuidv4()}>
                             <Box className={"row_title"}>
                                 <LinearProgress className={"ratingProgressbar"} variant={"determinate"} key={uuidv4()}
                                                 value={getRatingValue(rating.value)}/>
-                                <Typography fontSize={30} key={uuidv4()}>{`${rating.value}`}</Typography>
+                                <Typography sx={{fontWeight: "bold"}} fontSize={30}
+                                            key={uuidv4()}>{`${rating.value}`}</Typography>
                             </Box>
-                            <Typography key={uuidv4()}>{`Source: ${rating.source}`}</Typography>
+                            <Typography key={uuidv4()}>{`${t("source")}: ${rating.source}`}</Typography>
                         </Paper>
                     })}
                 </Box>
             }
-        </>
+        </Box>
     }
 
     const getRatingValue = (value: string | null): number => {
@@ -200,7 +194,7 @@ function MovieDetails() {
         return (
             <>
                 <Box className={"row_title"}>
-                    <Typography variant={"h3"}>{`${details?.title}`}</Typography>
+                    <Typography sx={{fontWeight: "bold"}} variant={"h3"}>{`${details?.title}`}</Typography>
                     {getStarIcon()}
                 </Box>
 
@@ -209,7 +203,7 @@ function MovieDetails() {
                     {getMetascore()}
                 </Box>
 
-                <Box className={"row"}>
+                <Box className={"row_plot_desc"}>
                     {getPoster()}
                     {getPlot()}
                 </Box>
@@ -217,7 +211,7 @@ function MovieDetails() {
                 {getLanguages()}
                 {getGenres()}
                 {getWriters()}
-                {getActors()}
+                <People/>
                 {getInfo()}
                 {getRatings()}
             </>

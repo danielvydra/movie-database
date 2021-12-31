@@ -23,5 +23,12 @@
   "movieCard_tooltip": "Click to display movie details of {{title}} on new tab",
   "loadingContent": "Loading content...",
   "noFavoriteMovies": "You have no favorite movies",
-  "noFavoriteMovies_hint": "Search movie, display details and add to favorites"
+  "noFavoriteMovies_hint": "Search movie, display details and add to favorites",
+  "actor": "Actor",
+  "director": "Director",
+  "writer": "Writer",
+  "people": "People",
+  "source": "Source",
+  "ratings": "Ratings"
+
 }

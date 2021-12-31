@@ -19,7 +19,7 @@ export async function createMovieDetailsStructure(id: string, plot: PlotTypes = 
             awards: data.Awards === emptyVal ? null : data.Awards,
             boxOffice: data.BoxOffice === emptyVal ? null : data.BoxOffice,
             country: data.Country === emptyVal ? null : data.Country,
-            director: data.Director === emptyVal ? null : data.Director,
+            director: data.Director === emptyVal ? null : (data.Director.includes(",") ? data.Director.split(", ") : [data.Director]),
             DVD: data.DVD === emptyVal ? null : moment(data.DVD, dateFormat),
             genres: data.Genre === emptyVal ? null : (data.Genre.includes(",") ? data.Genre.split(", ") : [data.Genre]),
             imdbRating: data.imdbRating === emptyVal ? null : parseFloat(data.imdbRating),
