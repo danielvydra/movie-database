@@ -27,6 +27,7 @@ import {dateFormat, favoriteMoviesKey} from "../../consts/Consts";
 import {IMovieInfo} from "../../models/MovieInfoModel";
 import {addFavoriteMovie, isInFavorites, removeFavoriteMovie} from "../../utils/FavoriteMoviesHelper";
 import People from "../../components/People";
+import Ratings from "../../components/Ratings";
 
 function MovieDetails() {
     const params = useParams();
@@ -137,38 +138,6 @@ function MovieDetails() {
         </>
     }
 
-    const getRatings = () => {
-        return <Box sx={{mt: "2rem"}}>
-            <Typography sx={{fontWeight: "bold"}} variant={"h4"}>{t("ratings")}</Typography>
-            {details?.ratings == null ?
-                <Typography>No ratings to display</Typography>
-                :
-                <Box className={"row"} sx={{mt: "1.5rem"}}>
-                    {details?.ratings.map((rating) => {
-                        return <Paper className={"paper_rating"} key={uuidv4()}>
-                            <Box className={"row_title"}>
-                                <LinearProgress className={"ratingProgressbar"} variant={"determinate"} key={uuidv4()}
-                                                value={getRatingValue(rating.value)}/>
-                                <Typography sx={{fontWeight: "bold"}} fontSize={30}
-                                            key={uuidv4()}>{`${rating.value}`}</Typography>
-                            </Box>
-                            <Typography key={uuidv4()}>{`${t("source")}: ${rating.source}`}</Typography>
-                        </Paper>
-                    })}
-                </Box>
-            }
-        </Box>
-    }
-
-    const getRatingValue = (value: string | null): number => {
-        if (!value) return -1
-        if (value.includes("%")) return parseInt(value.split("%")[0])
-        else if (value.includes("/")) {
-            let values = value.split("/")
-            return 100.0 * parseInt(values[0]) / parseInt(values[1])
-        } else return -1
-    }
-
     const getSubtitle = () => {
         let str = ""
         if (details?.year) str += `${details?.year}`
@@ -213,7 +182,7 @@ function MovieDetails() {
                 {getWriters()}
                 <People/>
                 {getInfo()}
-                {getRatings()}
+                <Ratings/>
             </>
         )
     }
