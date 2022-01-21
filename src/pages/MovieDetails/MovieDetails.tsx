@@ -39,6 +39,15 @@ function MovieDetails() {
 
 
     const getContent = () => {
+
+        if (loading) return getLoading()
+
+        if (!details) return noContentMessage()
+
+        return getDetails()
+    }
+
+    const getDetails = () => {
         return (
             <>
                 <Title/>
@@ -59,10 +68,19 @@ function MovieDetails() {
 
     const noContentMessage = () => {
         return (
-            <>
-                <Typography variant={"h2"}>{t("noContent_info")}</Typography>
-                <Typography variant={"h5"}>{t("incorrectMovieID")}</Typography>
-            </>
+            <Box className={"noContent"}>
+                <Typography variant={"h1"}>{t("noContent_info")}</Typography>
+                <Typography variant={"h4"}>{t("incorrectMovieID")}</Typography>
+            </Box>
+        )
+    }
+
+    const getLoading = () => {
+        return (
+            <Box className={"noContent"}>
+                <Typography variant={"h5"}>{t("loadingContent")}</Typography>
+                <CircularProgress size={100}/>
+            </Box>
         )
     }
 
@@ -71,13 +89,7 @@ function MovieDetails() {
             <CustomAppBar/>
 
             <div className={"innerDiv"}>
-                {loading && (
-                    <Box className={"noContent"}>
-                        <Typography>{t("loadingContent")}</Typography>
-                        <CircularProgress size={100}/>
-                    </Box>
-                )}
-                {!details ? noContentMessage() : getContent()}
+                {getContent()}
             </div>
 
         </>
